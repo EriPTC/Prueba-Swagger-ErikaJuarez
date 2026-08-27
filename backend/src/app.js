@@ -37,22 +37,38 @@ app.get("/ping", (req, res) => {
   res.json({ status: "OK", message: "Pong" });
 });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/categories", categoryRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/barcodes", barcodeRoutes);
-app.use("/api/excel", excelRoutes);
-app.use("/api/images", imageRoutes);
-app.use("/api/settings", settingsRoutes);
-app.use("/api/banners", bannerRoutes);
+app.use("/api/auth", authRoutes); // Listo
+app.use("/api/categories", categoryRoutes); // Listo
+
+app.use("/api/products", productRoutes); 
+
+app.use("/api/barcodes", barcodeRoutes); // Listo
+app.use("/api/excel", excelRoutes); // Listo
+
+app.use("/api/images", imageRoutes); //Listo
+
+app.use("/api/settings", settingsRoutes); // listo
+app.use("/api/banners", bannerRoutes);// Listo
+
 app.use("/api/announcement-bar", announcementBarRoutes);
-app.use("/api/orders", orderRoutes);
-app.use("/api/store-hours", storeHoursRoutes);
-app.use("/api/notifications", notificationRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/geocoding", geocodingRoutes);
-app.use("/api/closure-dates", closureDateRoutes);
-app.use("/api/fonts", fontRoutes);
+
+app.use("/api/orders", orderRoutes); // Listo
+app.use("/api/store-hours", storeHoursRoutes); //Listo
+app.use("/api/notifications", notificationRoutes); //Listo
+
+app.use("/api/users", userRoutes); // Listo
+
+app.use("/api/geocoding", geocodingRoutes); // Listo
+app.use("/api/closure-dates", closureDateRoutes); //Listo
+
+app.use("/api/fonts", fontRoutes); // Listo
+
+
+//Documentacion
+import swaggerUI from "swagger-ui-express"
+import swaggerDocument from "./utils/actividadevaluada-Cuarta-actividad-evaluada-1.0-resolved.json" with {type: "json"}
+
+app.use ("/api/documentation", swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 app.use(notFound);
 app.use(errorHandler);
